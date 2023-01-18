@@ -1,0 +1,43 @@
+﻿<Window x:Class="PartRecorder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PartRecorder"
+        mc:Ignorable="d"
+        Title="PartRecorder" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="recordViewSource"/>
+    </Window.Resources>
+    <Grid>
+        <DataGrid x:Name="PartList" AutoGenerateColumns="False" 
+          EnableRowVirtualization="True" CanUserAddRows="false"
+          ItemsSource="{Binding Source={StaticResource recordViewSource}}" 
+          Margin="400,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionChanged="OnSelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="Barcode" 
+                            Width="*"
+                            IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding PartNumber}" Header="Part Number" 
+                            Width="*"
+                            IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Quantity}" Header="Quantity" 
+                            Width="*"
+                            IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="BarCode" HorizontalAlignment="Left" Margin="140,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="30" FontSize="20"/>
+        <Label Content="Barcode:" HorizontalAlignment="Left" Margin="40,151,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="210,189,0,0" VerticalAlignment="Top" Height="30" FontSize="18" IsDefault="True" Width="150" Click="btnAdd_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="210,224,0,0" VerticalAlignment="Top" FontSize="18" Width="150" Height="30" Click="btnDelete_Click" IsEnabled="False"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="40,224,0,0" VerticalAlignment="Top" FontSize="18" Width="100" Height="30" Click="btnClear_Click"/>
+        <Button x:Name="btnImport" Content="Import" HorizontalAlignment="Left" Margin="42,324,0,0" VerticalAlignment="Top" Width="318" Height="30" FontSize="18"/>
+        <Button x:Name="btnExport" Content="Export" HorizontalAlignment="Left" Margin="42,359,0,0" VerticalAlignment="Top" Width="318" Height="30" FontSize="18" Click="btnExport_Click"/>
+        <Label Content="PartRecorder" HorizontalAlignment="Left" Margin="90,31,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Label Content="By Roshan X. Liu" HorizontalAlignment="Left" Margin="154,89,0,0" VerticalAlignment="Top"/>
+
+
+    </Grid>
+
+
+</Window>
